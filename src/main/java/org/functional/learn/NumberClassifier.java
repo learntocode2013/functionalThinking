@@ -16,12 +16,14 @@ import java.util.stream.IntStream;
  */
 public class NumberClassifier
 {
+    // Stateless function which concentrates on the what not how. No visible iteration.
     public static IntStream factorsOf(final int num)
     {
         return IntStream.range(1,num+1)
                         .filter(potential -> num % potential == 0);
     }
 
+    // Stateless function which concentrates on the what not how. No visible iteration.
     public static int aliquotSum(final int num)
     {
         return factorsOf(num).sum() - num ;
@@ -29,8 +31,7 @@ public class NumberClassifier
 
     public static boolean isPerfect(final int num)
     {
-        boolean result = aliquotSum(num) == num ;
-        return result;
+        return aliquotSum(num) == num ;
     }
 
     public static boolean isAbundant(final int num)
@@ -45,8 +46,11 @@ public class NumberClassifier
 
     public static void main(String[] args)
     {
-        NumberClassifier nc = new NumberClassifier();
-        System.out.printf("%d is : perfect ? %b | is abundant ? %b | is deficient ? %b %n", 100,nc.isPerfect(100),
-                          nc.isAbundant(100),nc.isDeficient(100));
+        int num = 100 ;
+        System.out.printf("%d is : perfect ? %b | is abundant ? %b | is deficient ? %b %n",
+                          num,
+                          NumberClassifier.isPerfect(num),
+                          NumberClassifier.isAbundant(num),
+                          NumberClassifier.isDeficient(num));
     }
 }
