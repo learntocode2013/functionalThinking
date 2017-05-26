@@ -19,7 +19,7 @@ public class NumberClassifier
     // Stateless function which concentrates on the what not how. No visible iteration.
     public static IntStream factorsOf(final int num)
     {
-        return IntStream.range(1,num+1)
+        return IntStream.rangeClosed(1, num)
                         .filter(potential -> num % potential == 0);
     }
 
@@ -46,7 +46,7 @@ public class NumberClassifier
 
     public static void main(String[] args)
     {
-        int num = 100 ;
+        int num = 6 ;
         System.out.printf("%d is : perfect ? %b | is abundant ? %b | is deficient ? %b %n",
                           num,
                           NumberClassifier.isPerfect(num),
